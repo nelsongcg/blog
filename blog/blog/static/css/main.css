@@ -21,10 +21,27 @@ html,body {
     font-weight: 500;
 }
 
+.fs-12 {
+    font-size: 0.75rem;
+}
+
+
+.fs-14 {
+    font-size: 0.9375rem;
+}
+
+.fs-15 {
+    font-size: 0.875rem;
+}
+
+.infscroll-title {
+    font-size: 22px;
+    letter-spacing: -0.6px;
+}
 
 
 @media only screen and (max-width: 768px) {
-    .infscroll h1 {
+    .infscroll-title {
         font-size: 0.9375rem;
         letter-spacing: -0.0px;
     }
@@ -32,4 +49,4 @@ html,body {
         font-size: 0.8125rem;
     }
     
-})
+}

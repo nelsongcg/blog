@@ -8,8 +8,8 @@ FAKE = faker.Faker()
 class PostFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Post
-    title = factory.Faker("sentence", nb_works=12)
-    subtitle = factory.Faker("sentence", nb_works=12)
+    title = factory.Faker("sentence", nb_words=12)
+    subtitle = factory.Faker("sentence", nb_words=12)
     slug = factory.Faker("slug")
     author = User.objects.get_or_create(username='admin')[0]
 
@@ -21,3 +21,17 @@ class PostFactory(factory.django.DjangoModelFactory):
         return x
     
     status = "published"
+
+    @factory.post_generation
+    def tags(self, create, extracted, **kwags):
+        if not create:
+            return 
+        if extracted:
+            self.tags.add(extracted)
+        else:
+            self.tags.add(
+                "Causal Forest",
+                "Causal Tree",
+                "Deployment",
+            )
+            
